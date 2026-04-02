@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Zap, Mail, ArrowUpRight, ExternalLink } from "lucide-react";
+import { Mail, ArrowUpRight } from "lucide-react";
+import LogoIcon from "@/components/ui/LogoIcon";
 
 const footerLinks = {
   Services: [
@@ -37,15 +38,19 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 pb-12 border-b border-[#1e1e2e]">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Link href="/" className="flex items-center gap-2.5 font-bold text-lg group w-fit">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center">
-                <Zap className="w-4 h-4 text-white" strokeWidth={2.5} />
+            <Link href="/" className="flex items-center gap-2.5 group w-fit">
+              <LogoIcon size={38} />
+              <div className="flex flex-col leading-none">
+                <span className="gradient-text text-base font-extrabold tracking-tight">NexGen AI</span>
+                <span className="text-slate-500 text-[10px] font-medium tracking-widest uppercase">Studio · by Su Zan</span>
               </div>
-              <span className="gradient-text">NexGen</span>
-              <span className="text-slate-300">AI Studio</span>
             </Link>
             <p className="mt-4 text-slate-400 text-sm leading-relaxed max-w-xs">
               We build AI-powered digital products — websites, apps, agents, and automations — that give your business an unfair advantage.
+            </p>
+            <p className="mt-3 text-xs text-slate-600">
+              Designed &amp; built by{" "}
+              <span className="text-indigo-400 font-semibold">Su Zan</span>
             </p>
             {/* Social links */}
             <div className="flex gap-3 mt-6">
@@ -97,8 +102,11 @@ export default function Footer() {
             © {new Date().getFullYear()} NexGen AI Studio. All rights reserved.
           </p>
           <p className="text-slate-500 text-sm flex items-center gap-1.5">
-            Built with AI · Powered by innovation
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" aria-hidden="true" />
+            Crafted with ❤️ by{" "}
+            <span className="gradient-text font-semibold">Su Zan</span>
+            <span className="mx-1 text-slate-700">·</span>
+            Powered by AI
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse ml-1" aria-hidden="true" />
           </p>
         </div>
       </div>

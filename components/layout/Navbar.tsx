@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Button from "@/components/ui/Button";
-import { Menu, X, Zap } from "lucide-react";
+import LogoIcon from "@/components/ui/LogoIcon";
+import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -48,11 +49,13 @@ export default function Navbar() {
           className="flex items-center gap-2.5 font-bold text-lg group"
           aria-label="NexGen AI Studio Home"
         >
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center shadow-lg group-hover:shadow-indigo-500/40 transition-shadow">
-            <Zap className="w-4.5 h-4.5 text-white" strokeWidth={2.5} />
+          <div className="relative group-hover:scale-105 transition-transform duration-200">
+            <LogoIcon size={36} />
           </div>
-          <span className="gradient-text">NexGen</span>
-          <span className="text-slate-300">AI Studio</span>
+          <div className="flex flex-col leading-none">
+            <span className="gradient-text text-base font-extrabold tracking-tight">NexGen AI</span>
+            <span className="text-slate-500 text-[10px] font-medium tracking-widest uppercase">Studio · by Su Zan</span>
+          </div>
         </Link>
 
         {/* Desktop nav */}
