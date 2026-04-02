@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { Target, Lightbulb, Shield, Users } from "lucide-react";
+import { Target, Lightbulb, Shield, Users, Code2, Cpu, Globe, Bot } from "lucide-react";
 import Link from "next/link";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import Button from "@/components/ui/Button";
 import CTABanner from "@/components/sections/CTABanner";
+import LogoIcon from "@/components/ui/LogoIcon";
 
 export const metadata: Metadata = {
   title: "About",
@@ -44,11 +45,13 @@ const values = [
 
 const teamMembers = [
   {
-    name: "Sujan",
+    name: "Su Zan",
     role: "Founder & Lead AI Engineer",
-    bio: "Full-stack engineer with deep expertise in LLMs, AI agent systems, and production Next.js apps.",
-    avatar: "S",
+    bio: "Full-stack engineer and AI builder with deep expertise in LLMs, autonomous agent systems, Next.js, and production-grade web products. Building the future, one AI product at a time.",
+    avatar: "SZ",
     gradient: "from-indigo-600 to-violet-600",
+    skills: ["Next.js & React", "AI Agents", "LLMs & Fine-tuning", "Python & APIs"],
+    skillIcons: [Code2, Bot, Cpu, Globe],
   },
 ];
 
@@ -212,19 +215,71 @@ export default function AboutPage() {
           <div className="flex justify-center">
             {teamMembers.map((member, i) => (
               <ScrollReveal key={member.name} delay={i * 100} direction="up">
-                <div className="text-center p-8 rounded-2xl bg-[#12121a] border border-[#1e1e2e] hover:border-indigo-500/20 transition-all duration-300 max-w-xs">
+                <div className="relative p-8 rounded-2xl bg-[#12121a] border border-[#1e1e2e] hover:border-indigo-500/30 transition-all duration-300 max-w-md w-full">
+                  {/* Gradient glow background */}
                   <div
-                    className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${member.gradient} flex items-center justify-center text-white text-2xl font-extrabold mx-auto mb-4`}
-                  >
-                    {member.avatar}
+                    className="absolute inset-0 rounded-2xl opacity-0 hover:opacity-100 transition-opacity duration-500"
+                    style={{
+                      background:
+                        "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(99,102,241,0.08) 0%, transparent 70%)",
+                    }}
+                    aria-hidden="true"
+                  />
+
+                  <div className="relative flex flex-col sm:flex-row items-center sm:items-start gap-6">
+                    {/* Avatar with logo nodes aesthetic */}
+                    <div className="flex-shrink-0 relative">
+                      <div
+                        className={`w-24 h-24 rounded-2xl bg-gradient-to-br ${member.gradient} flex items-center justify-center text-white text-2xl font-extrabold shadow-xl shadow-indigo-500/20`}
+                      >
+                        {member.avatar}
+                      </div>
+                      {/* Online indicator */}
+                      <span className="absolute -bottom-1 -right-1 w-5 h-5 bg-emerald-400 rounded-full border-2 border-[#12121a] flex items-center justify-center">
+                        <span className="w-2 h-2 bg-emerald-400 rounded-full animate-ping" />
+                      </span>
+                    </div>
+
+                    {/* Info */}
+                    <div className="flex-1 text-center sm:text-left">
+                      <h3 className="text-xl font-extrabold text-white mb-0.5">
+                        {member.name}
+                      </h3>
+                      <p className="text-sm gradient-text font-semibold mb-3">
+                        {member.role}
+                      </p>
+                      <p className="text-sm text-slate-400 leading-relaxed mb-5">
+                        {member.bio}
+                      </p>
+
+                      {/* Skill tags */}
+                      <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
+                        {member.skills.map((skill, idx) => {
+                          const Icon = member.skillIcons[idx];
+                          return (
+                            <span
+                              key={skill}
+                              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-medium"
+                            >
+                              <Icon className="w-3 h-3" />
+                              {skill}
+                            </span>
+                          );
+                        })}
+                      </div>
+                    </div>
                   </div>
-                  <h3 className="text-lg font-bold text-white mb-1">
-                    {member.name}
-                  </h3>
-                  <p className="text-sm text-indigo-400 mb-3">{member.role}</p>
-                  <p className="text-sm text-slate-500 leading-relaxed">
-                    {member.bio}
-                  </p>
+
+                  {/* Footer badge */}
+                  <div className="relative mt-6 pt-5 border-t border-[#1e1e2e] flex items-center justify-between">
+                    <span className="text-xs text-slate-600">
+                      Building NexGen AI Studio
+                    </span>
+                    <div className="flex items-center gap-2">
+                      <LogoIcon size={20} />
+                      <span className="text-xs gradient-text font-semibold">Founder</span>
+                    </div>
+                  </div>
                 </div>
               </ScrollReveal>
             ))}

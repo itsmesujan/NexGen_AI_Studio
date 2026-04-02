@@ -39,7 +39,7 @@ export default function Hero() {
         {/* Top badge */}
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-sm font-medium mb-8 animate-pulse-glow">
           <Star className="w-3.5 h-3.5 fill-current" />
-          AI-First Digital Studio — Est. 2024
+          AI-First Digital Studio by <span className="gradient-text font-bold">Su Zan</span>
         </div>
 
         {/* Headline */}
